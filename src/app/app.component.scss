@@ -1,0 +1,35 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.header {
+  color: #FF6347;
+  padding-top: 16px;
+}
+.m-24 {
+  margin: 24px;
+}
+.info-msg {
+  color: #737373;
+}
+.btn-adjust {
+  max-height: 45px;
+  padding: 0 26px;
+  margin-top: 32px;
+}
+table th, td {
+  text-align: center;
+}
+table thead tr{
+  background: rgb(0, 85, 167);
+  background: linear-gradient(90deg, rgba(0, 85, 167, 1) 0%, rgba(0, 152, 223, 2) 100%);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  min-height: 40px;
+  th {
+    color: #fff;
+  }
+}
+table tbody tr td {
+  color: #4c4c4c;
+}
+.m-t-60 {
+  margin-top: 60px;
+}
