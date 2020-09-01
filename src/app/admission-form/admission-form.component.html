@@ -1,13 +1,71 @@
 <div class="p-24">
-  <div class="d-flex justify-content-between">
-    <div class="w-100">
-      <h5 class="primary-txt f-w-500">Admission form</h5>
-      <p class="icon-color p-t-8 border-bottom p-b-8">Plese fill the below details to add a student detail.</p>
+  <div class="d-flex justify-content-end">
+    <span class="mdi mdi-close close" (click)="close()"></span>
+  </div>
+  <div class="w-100">
+    <h5 class="primary-txt f-w-500">Admission form</h5>
+    <p class="icon-color border-bottom p-b-16">Plese fill the below details to add a student detail.</p>
+  </div>
+  <!-- admission form starts from here -->
+  <div [formGroup]="admissionForm">
+    <div class="d-flex">
+      <div class="d-flex flex-column">
+        <label>First name</label>
+        <input type="text" class="form-control" placeholder="Enter first name" formControlName="firstNm">
+        <div *ngIf="form.firstNm.invalid && (form.firstNm.dirty || form.firstNm.touched)"
+             class="alert alert-danger">
+          <div *ngIf="form.firstNm.errors.required">
+            first name is required.
+          </div>
+          <div *ngIf="form.firstNm.errors.maxlength">
+            first name must be at least 4 characters long.
+          </div>
+          <div *ngIf="form.firstNm.errors.pattern">
+            first name should contail lower & uppercase letters only
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column p-l-24">
+        <label>Last name</label>
+        <input type="text" class="form-control" placeholder="Enter last name" formControlName="lastNm">
+        <div *ngIf="form.lastNm.invalid && (form.lastNm.dirty || form.lastNm.touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.lastNm.errors.required">
+          last name is required.
+        </div>
+        <div *ngIf="form.lastNm.errors.maxlength">
+          last name must be at least 4 characters long.
+        </div>
+        <div *ngIf="form.lastNm.errors.pattern">
+          last name should contail lower & uppercase letters only
+        </div>
+   </div>
+      </div>
     </div>
-    <span class="mdi mdi-close mdi-18px" (click)="close()"></span>
+    <div class="d-flex flex-column p-t-16">
+      <label>Class</label>
+      <input type="text" class="form-control" placeholder="Enter class" formControlName="class">
+    </div>
+    <div class="d-flex flex-column p-t-16">
+      <label>Year of passout</label>
+      <input type="number" class="form-control" placeholder="Enter year of passout" formControlName="yearOfPass" (keyup)="yearofPassout($event.target.value)">
+      <div *ngIf="form.yearOfPass.invalid && (form.yearOfPass.dirty || form.yearOfPass.touched)"
+      class="alert alert-danger">
+      <div *ngIf="form.yearOfPass.errors.required">
+        passout year is required.
+      </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="showValidation == true">
+      passout should be greater than 2017
+    </div>
+    </div>
+    <div class="d-flex flex-column p-t-16">
+      <label>Percentage</label>
+      <input type="number" class="form-control" placeholder="Enter percentage" formControlName="percentage">
+    </div>
+    <div class="d-flex justify-content-end p-t-16">
+      <button type="button" class="btn btn-primary btn-adjust min-height" [disabled]="admissionForm.invalid" (click)="save()">Submit</button>
+    </div>
   </div>
-  <div class="d-flex justify-content-end m-t-16">
-    <button type="button" class="btn-submit btn-transparent m-r-16">Cancel</button>
-    <button type="button" class="btn-submit btn-primary" (click)="save()">Save</button>
-  </div>
+  <!-- admission form ends here -->
 </div>

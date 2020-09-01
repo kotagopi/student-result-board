@@ -13,6 +13,9 @@
   <table class="col-sm-12 m-t-60 table table-bordered">
     <thead>
       <tr>
+        <th class="student-header" colspan="4">Students Result Board</th>
+      </tr>
+      <tr>
         <th>Student Name</th>
         <th>Roll Number</th>
         <th>Total Marks</th>
@@ -20,7 +23,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of studentData" [ngClass]="{'table-danger': item.status == 'fail', 'table-secondary': item.status == 'pass'}">
+      <tr *ngFor="let item of studentData" [ngClass]="{'table-danger': item.status == 'fail', 'table-secondary': item.status == 'pass', 'table-success': item.totalMarks == getMaxValue()}">
         <td>
           {{item.studentNm}}
         </td>

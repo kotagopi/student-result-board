@@ -142,6 +142,16 @@ export class AppComponent implements OnInit {
   constructor(private matdialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.getStudentsStatus();
+  }
+/**
+ * @description to get student status fail, pass or topper.
+ * @author Gopi
+ */
+  private getStudentsStatus(): void {
+    // used to sort student details in alphabetical order
+    this.stundentResults.sort((a, b) => a.studentNm.localeCompare(b.studentNm));
+    // used to get the status of student
     this.studentData = this.stundentResults.map(res => {
       const totalMarks = res.marks.english + res.marks.maths + res.marks.science;
       res['totalMarks'] = totalMarks;
@@ -152,12 +162,25 @@ export class AppComponent implements OnInit {
       }
       return res;
     });
-    console.log('students data', this.studentData);
+    // change the status for the max scorer as topper
+    this.studentData.map(val => {
+      if (val.totalMarks === this.getMaxValue()) {
+        val.status = 'topper';
+      }
+    });
+    return;
   }
-
+/**
+ * @description used to open admission dilog component
+ * @author Gopi
+ */
   public createAdmission(): void {
     this.matdialog.open(AdmissionFormComponent, {
       panelClass: 'col-sm-6'
     });
+  }
+
+  public getMaxValue(): void {
+    return this.studentData.reduce((max, p) => p['totalMarks'] > max ? p['totalMarks'] : max, this.studentData[0]['totalMarks']);
   }
 }

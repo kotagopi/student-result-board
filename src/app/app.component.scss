@@ -14,9 +14,6 @@
   padding: 0 26px;
   margin-top: 32px;
 }
-table th, td {
-  text-align: center;
-}
 table thead tr{
   background: rgb(0, 85, 167);
   background: linear-gradient(90deg, rgba(0, 85, 167, 1) 0%, rgba(0, 152, 223, 2) 100%);
@@ -25,11 +22,22 @@ table thead tr{
   min-height: 40px;
   th {
     color: #fff;
+    font-style: italic;
+
   }
 }
 table tbody tr td {
   color: #4c4c4c;
+  text-transform: capitalize !important;
 }
 .m-t-60 {
   margin-top: 60px;
+}
+.f-bold {
+  font-weight: bold;
+}
+.student-header {
+  font-style: normal !important;
+  font-weight: bold;
+  text-align: left !important;
 }
